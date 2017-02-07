@@ -4,7 +4,7 @@
 
     @if((Auth::user()->token_id)<5)
         <img src="{{asset('image/msekko.png')}}" width="450" height="150" alt="Msekko Logo" >
-        <h3>您已经登录了系统，但还没获得用户权限，请联系管理员开通用户权限</h3>
+        <h3>您已经登录了系统，但还没获得用户权限，111请联系管理员开通用户权限</h3>
     @else
         <!-- 目前任务 -->
         @if (!empty($tasks))
