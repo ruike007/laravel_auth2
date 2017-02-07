@@ -18,12 +18,7 @@
                     <table class="table table-bordered table-condensed">
                         <thead>
                           <tr>
-                            <th>类型</th>
-                            <th>地址</th>
-                            <th>项目</th>
-                            <th>用户</th>
-                            <th>密码</th>
-                            <th>备注</th>
+                              @include('slice.TaskTitle')
                             <th>提交</th>
                         </tr>
                         </thead>
@@ -77,12 +72,7 @@
                         <!-- 表头 -->
                         <thead>
                             <tr>
-                            <th>类型</th>
-                            <th>地址</th>
-                            <th>项目</th>
-                            <th>用户</th>
-                            <th>密码</th>
-                            <th>备注</th>
+                                @include('slice.TaskTitle')
                             <th style="width: 120px;">编辑与删除</th>
                             </tr>
                         </thead>
@@ -90,12 +80,7 @@
                         <tbody>
                         @foreach ($tasks as $task)
                         <tr >
-                            <td>{{ $task['team'] }}</td>
-                            <td>{{ $task['place'] }}</td>
-                            <td>{{ $task['item'] }}</td>
-                            <td>{{ $task['name'] }}</td>
-                            <td>{{ $task['password'] }}</td>
-                            <td>{{ $task['others'] }}</td>
+                            @include('slice.ShowTask')
                         <!-- 删除按钮 -->
                             <td>
                                 <form  action="/task/{{ $task['id'] }}" method="POST">

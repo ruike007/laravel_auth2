@@ -16,24 +16,14 @@
                     <!-- 表头 -->
                     <thead>
                     <tr>
-                        <th>类型</th>
-                        <th>地址</th>
-                        <th>项目</th>
-                        <th>用户</th>
-                        <th>密码</th>
-                        <th>备注</th>
+                        @include('slice.TaskTitle')
                     </tr>
                     </thead>
                     <!-- 表身 -->
                     <tbody>
                     @foreach ($tasks as $task)
                         <tr>
-                            <td>{{ $task['team'] }}</td>
-                            <td>{{ $task['place'] }}</td>
-                            <td>{{ $task['item'] }}</td>
-                            <td>{{ $task['name'] }}</td>
-                            <td>{{ $task['password'] }}</td>
-                            <td>{{ $task['others'] }}</td>
+                            @include('slice.ShowTask')
                         </tr>
                     @endforeach
                     </tbody>
