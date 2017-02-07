@@ -44,7 +44,7 @@ class HomeController extends Controller
     {
         //模糊搜索出item.place.others是数据，并且权限不能低于当前用户
         $task = Task::where('team','<=',Auth::user()->token_id)->where('item','like','%'.$request->item.'%')
-            ->orwhere('id','like','%'.$request->item.'%')->orwhere('place','like','%'.$request->item.'%')->get();
+            ->orwhere('place','like','%'.$request->item.'%')->get();
         //自定义解密函数，见common、helpers.php
         $tasks = DecryptByMe($task);
         //用户等级判断，有编辑权限自动跳转到编辑页面
