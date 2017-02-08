@@ -43,6 +43,15 @@ class UserController extends Controller
             $this->validate($request,[
                 'password_old' => 'required|max:64|min:6',
                 'password_new' => 'required|max:64|min:6',
+            ], [
+                'password_old.required' => '原始密码不能为空',
+                'password_old.max' => '原始密码太长',
+                'password_old.min' => '原始密码太短，不能少于6位数',
+
+                'password_new.required' => '新的密码不能为空',
+                'password_new.max' => '新的密码太长',
+                'password_new.min' => '新的密码太短，不能少于6位数',
+
             ]);
             $old = $request->password_old;
             $res = Auth::user()->password;

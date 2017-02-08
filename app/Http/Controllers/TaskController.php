@@ -45,6 +45,9 @@ class TaskController extends Controller
         //item验证，如果不符合要求，直接返回上一页，并将错误存于全局 $errors中
         $this->validate($request, [
             'item' => 'required|max:255',
+        ],[
+            'required' => '项目名不能为空',
+            'max' => '项目名太长'
         ]);
         //日志记录，详见common/helpers
         Logs('1','期望增加表单',($request->item),'1');
