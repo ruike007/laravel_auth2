@@ -50,3 +50,12 @@ Route::resource('user','UserController',
  * 查找任务
  */
 Route::post('search','HomeController@search');
+
+/**
+ * 测试路由
+ */
+Route::get('test',
+    function(){
+        $hash = md5(strtolower(trim(Auth::user()->email)));
+        return "http:www.gravatar.com/avatar/$hash?s=140";
+    });

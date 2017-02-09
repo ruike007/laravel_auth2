@@ -15,16 +15,20 @@
                         <label class="sr-only" for="task-item">旧密码</label>
                         初始密码 ： <input type="password" name="password_old" id="psw_ol" value="{{old('password_old')}}" >
                     </div>
+                    </br>
                     <div>
                         <label class="sr-only" for="task-item">新密码</label>
-                        修改密码 ： <input type="password" name="password_new" id="psw_new" value="{{old('password_new')}}" >
+                        修改密码 ： <input type="password" name="password" id="psw_new" value="{{old('password_new')}}" >
                     </div>
+                    </br>
                     <div>
                         <label class="sr-only" for="task-item">确认密码</label>
-                        确认密码 ： <input type="password" name="psw_re" id="psw_re" value="{{old('psw_re')}}" >
+                        确认密码 ： <input type="password" name="password_confirmation" id="psw_re" value="{{old('psw_re')}}" >
                     </div>
+                    </br>
                     <td><button type="submit" class="btn btn-primary">提交</button></td>
                 </form>
+                @include('slice.session')
             </div>
         </div>
     @else

@@ -62,6 +62,7 @@ class TaskController extends Controller
         $task->others = $request->others;
         $task->save();
 
+        session()->flash('success','项目添加成功！');
         return redirect('/task');
     }
 
@@ -72,6 +73,7 @@ class TaskController extends Controller
 
         Task::findOrFail($task)->delete();
 
+        session()->flash('danger','项目已经删除！');
         return redirect('/task');
     }
 

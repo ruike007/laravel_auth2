@@ -38,19 +38,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->password_new == $request->psw_re)
-        {
+
             $this->validate($request,[
                 'password_old' => 'required|max:64|min:6',
-                'password_new' => 'required|max:64|min:6',
+                'password' => 'required|confirmed|max:64|min:6',
             ], [
                 'password_old.required' => '原始密码不能为空',
                 'password_old.max' => '原始密码太长',
                 'password_old.min' => '原始密码太短，不能少于6位数',
 
-                'password_new.required' => '新的密码不能为空',
-                'password_new.max' => '新的密码太长',
-                'password_new.min' => '新的密码太短，不能少于6位数',
+                'password.required' => '新的密码不能为空',
+                'password.max' => '新的密码太长',
+                'password.min' => '新的密码太短，不能少于6位数',
+                'password.confirmed' =>'两次密码不一致',
 
             ]);
             $old = $request->password_old;
@@ -61,9 +61,8 @@ class UserController extends Controller
                 $psw_new = bcrypt($request->password_new);
                 User::where('id',Auth::user()->id)->update(['password'=>$psw_new]);
 
-                return redirect('/user')
-                    ->withInput()
-                    ->withErrors('密码修改成功');
+               session()->flash('success','密码修改成功，请牢记您的新密码');
+                return redirect('/user');
             }
             else
             {
@@ -73,12 +72,6 @@ class UserController extends Controller
             }
             return redirect('/user');
         }
-        else
-        {
-            return redirect('/user')
-                ->withInput()
-                ->withErrors('两次密码输入不一致');
-        }
-    }
+
 
 }

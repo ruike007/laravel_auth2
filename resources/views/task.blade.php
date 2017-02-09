@@ -61,6 +61,7 @@
                         </tbody>
                     </table>
                 </form>
+                @include('slice.session')
             </div>
         </div>
         <!-- 目前任务 -->
