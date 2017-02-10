@@ -57,5 +57,5 @@ Route::post('search','HomeController@search');
 Route::get('test',
     function(){
         $hash = md5(strtolower(trim(Auth::user()->email)));
-        return "http:www.gravatar.com/avatar/$hash?s=140";
+        dd( "http:www.gravatar.com/avatar/$hash?s=140");
     });

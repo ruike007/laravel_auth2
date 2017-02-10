@@ -42,7 +42,6 @@ function Logs($level,$things,$byWho,$result)
 function DecryptByMe($task)
 {
     $i = 0;
-    $tasks = [];
     foreach ($task as $k)  //解密函数
     {
         if ($k->team == 1) {
@@ -54,13 +53,12 @@ function DecryptByMe($task)
         }
         $name2 = Crypt::decrypt($k->name);
         $pasw = Crypt::decrypt($k->password);
-        $tasks[$i] = ['id' => $k->id,
-            'place' => $k->place, 'item' => $k->item, 'team' => $team2,
-            'name' => $name2, 'password' => $pasw, 'others' => $k->others
-        ];
+        $task[$i]->team = $team2;
+        $task[$i]->name = $name2;
+        $task[$i]->password = $pasw;
         $i++;
     }
-    return $tasks;
+    return $task;
 }
 
 /**

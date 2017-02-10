@@ -7,7 +7,7 @@
     <h3>您已经登录了系统，但还没获得用户权限，请联系管理员开通用户权限</h3>
 @else
     <!-- 目前任务 -->
-    @if (!empty($tasks))
+    @if (count($tasks) > 0)
         <h2>目前项目</h2>
         <div >
             <div class="panel-body">
@@ -29,6 +29,7 @@
                     </tbody>
                 </table>
             </div>
+            {!! $tasks->render() !!}
         </div>
     @else
         <h2>目前项目为空</h2>

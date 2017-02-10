@@ -25,7 +25,7 @@ class TaskController extends Controller
     public function  index()
     {
         $addrs = Place::orderBy('created_at', 'ASC')->get();
-        $task = Task::where('team','<=',Auth::user()->token_id)->orderBy('created_at', 'DESC')->get();
+        $task = Task::where('team','<=',Auth::user()->token_id)->orderBy('created_at', 'DESC')->paginate(50);
         //自定义解密函数，见common、helpers.php
         $tasks = DecryptByMe($task);
         return view('task', compact('addrs','tasks'));

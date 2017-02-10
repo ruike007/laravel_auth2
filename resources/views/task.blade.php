@@ -65,7 +65,7 @@
             </div>
         </div>
         <!-- 目前任务 -->
-        @if (!empty($tasks))
+        @if (count($tasks) > 0)
                <h2>目前项目</h2>
                 <div class="panel-body text-left">
                     <table class="table table-bordered table-hover">
@@ -95,6 +95,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    {!! $tasks->render() !!}
                 </div>
         @else
             <h2>目前项目为空</h2>

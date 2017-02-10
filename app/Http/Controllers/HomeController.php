@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $task = Task::where('team','<=',Auth::user()->token_id)->orderBy('created_at', 'DESC')->get();
+        $task = Task::where('team','<=',Auth::user()->token_id)->orderBy('created_at', 'DESC')->paginate(30);
         //自定义解密函数，见common、helpers.php
         $tasks = DecryptByMe($task);
         return view('home', compact('tasks'));
@@ -44,7 +44,7 @@ class HomeController extends Controller
     {
         //模糊搜索出item.place.others是数据，并且权限不能低于当前用户
         $task = Task::where('team','<=',Auth::user()->token_id)->where('item','like','%'.$request->item.'%')
-            ->orwhere('place','like','%'.$request->item.'%')->get();
+            ->orwhere('place','like','%'.$request->item.'%')->paginate(100);
         //自定义解密函数，见common、helpers.php
         $tasks = DecryptByMe($task);
         //用户等级判断，有编辑权限自动跳转到编辑页面
