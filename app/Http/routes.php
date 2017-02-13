@@ -56,7 +56,5 @@ Route::post('search','HomeController@search');
  */
 Route::get('test',
     function(){
-        $hash = md5(strtolower(trim(Auth::user()->email)));
-        $test = str_random(30);
-        dd( compact('user') );
+        return view('test');
     });
